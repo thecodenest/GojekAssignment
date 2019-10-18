@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+    <item
+        android:id="@+id/action_sbs"
+        android:title="@string/menu_item_name1"
+        app:showAsAction="never"
+        android:padding="16dp" />
+
+    <item
+        android:id="@+id/action_sbn"
+        android:title="@string/menu_item_name2"
+        app:showAsAction="never"
+        android:padding="16dp" />
+</menu>
