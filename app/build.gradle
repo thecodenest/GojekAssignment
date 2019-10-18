@@ -40,4 +40,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
+    //circleimageview
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+
 }
