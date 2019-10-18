@@ -38,5 +38,6 @@ dependencies {
     //RxJava
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 }
