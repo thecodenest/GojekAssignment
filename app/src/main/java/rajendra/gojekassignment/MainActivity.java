@@ -36,6 +36,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private List<rajendra.gojekassignment.model.RecyclerView> data ;
     private RecyclerView recyclerView ;
     RecyclerViewAdapter dataAdapter;
+    private ShimmerFrameLayout mShimmerViewContainer;
+
 
 
     CompositeDisposable compositeDisposable=new CompositeDisposable();
@@ -123,12 +126,15 @@ public class MainActivity extends AppCompatActivity {
 
         dataAdapter = new RecyclerViewAdapter(this, gitRepos);
         recyclerView.setAdapter(dataAdapter);
+        dataAdapter.notifyDataSetChanged();
+        mShimmerViewContainer.stopShimmer();
+        mShimmerViewContainer.setVisibility(View.GONE);
     }
 
     private void setupRecyclerview() {
 
 
-        // adapter ini and setup
+        mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         menu= findViewById(R.id.menu);
         recyclerView = findViewById(R.id.recycler);
         recyclerView.hasFixedSize();
@@ -226,6 +232,20 @@ public class MainActivity extends AppCompatActivity {
 
         apiInterface = retrofit.create(ApiInterface.class);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mShimmerViewContainer.startShimmer();
+        fetchData();
+
+    }
+
+    @Override
+    protected void onPause() {
+        mShimmerViewContainer.stopShimmer();
+        super.onPause();
     }
 }
 

@@ -53,5 +53,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
 
+    // Gradle dependency on Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+
 
 }
