@@ -97,16 +97,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchData() {
 
-        compositeDisposable.add(apiInterface.getRepositories()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<List<GitRepo>>() {
+            compositeDisposable.add(apiInterface.getRepositories()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<List<GitRepo>>() {
             @Override
             public void accept(List<GitRepo> gitRepos) throws Exception {
 
-                displayData(gitRepos);
+                if(gitRepos.size()>0){
+                displayData(gitRepos);}
+
+                else{
+                    Toast.makeText(MainActivity.this,"Swomfhfhfh",Toast.LENGTH_LONG).show();
+                }
 
             }
+
+
         }));
 
 
