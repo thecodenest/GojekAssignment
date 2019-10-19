@@ -40,7 +40,8 @@
         </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="411dp"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
         android:layout_height="685dp"
         android:layout_marginTop="56dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,5 +1,7 @@
 package rajendra.gojekassignment.retrofit;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import rajendra.gojekassignment.model.GitRepo;
 import retrofit2.http.GET;
@@ -9,6 +11,6 @@ public interface ApiInterface {
 
     @Headers("Accept:application/json")
     @GET("repositories")
-    Observable<GitRepo> getRepositories();
+    Observable<List<GitRepo>> getRepositories();
 
 }
