@@ -29,6 +29,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -141,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
 
                            mShimmerViewContainer.stopShimmer();
                            mShimmerViewContainer.setVisibility(View.GONE);
+
+                           Intent i=new Intent(MainActivity.this, ConnectionError.class);
+                           startActivity(i);
 
                        }
 

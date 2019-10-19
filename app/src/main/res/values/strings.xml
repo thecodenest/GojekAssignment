@@ -3,4 +3,7 @@
     <string name="menu_item_name1">Sort by stars</string>
     <string name="menu_item_name2">Sort by name</string>
 
+    <string name="err1">Something went wrong..</string>
+    <string name="err2">An alien is probably blocking your signal</string>
+
 </resources>
