@@ -5,9 +5,11 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.internal.observers.ConsumerSingleObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -39,6 +41,9 @@ import android.widget.Toast;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+import org.xml.sax.ErrorHandler;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,9 +55,7 @@ import static rajendra.gojekassignment.retrofit.ApiClient.BASE_URL;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton menu;
-
     ApiInterface apiInterface;
-    private List<rajendra.gojekassignment.model.RecyclerView> data ;
     private RecyclerView recyclerView ;
     RecyclerViewAdapter dataAdapter;
     private ShimmerFrameLayout mShimmerViewContainer;
@@ -100,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchData() {
 
-            compositeDisposable.add(apiInterface.getRepositories()
+           /* compositeDisposable.add(apiInterface.getRepositories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Consumer<List<GitRepo>>() {
             @Override
-            public void accept(List<GitRepo> gitRepos) throws Exception {
+            public void accept(List<GitRepo> gitRepos) throws Exception{
 
                 if(gitRepos.size()>0){
                 displayData(gitRepos);}
@@ -116,8 +119,39 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+        }));*/
 
-        }));
+           apiInterface.getRepositories()
+                   .subscribeOn(Schedulers.io())
+                   .observeOn(AndroidSchedulers.mainThread())
+                   .subscribe(new Observer<List<GitRepo>>() {
+                       @Override
+                       public void onSubscribe(Disposable d) {
+
+                       }
+
+                       @Override
+                       public void onNext(List<GitRepo> gitRepos) {
+                           displayData(gitRepos);
+
+                       }
+
+                       @Override
+                       public void onError(Throwable e) {
+
+                           mShimmerViewContainer.stopShimmer();
+                           mShimmerViewContainer.setVisibility(View.GONE);
+
+                       }
+
+                       @Override
+                       public void onComplete() {
+
+
+
+                   }
+                   });
+
 
 
     }
@@ -247,6 +281,8 @@ public class MainActivity extends AppCompatActivity {
         mShimmerViewContainer.stopShimmer();
         super.onPause();
     }
+
+
 }
 
 
