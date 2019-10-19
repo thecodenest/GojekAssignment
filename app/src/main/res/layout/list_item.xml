@@ -69,21 +69,28 @@
 			android:textSize="12dp" />
 
 		<LinearLayout
+			android:id="@+id/collapse"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="10dp"
+			android:layout_marginBottom="16dp"
+			android:layout_marginTop="16dp"
 			android:gravity="center"
 			android:visibility="gone"
 			android:orientation="horizontal">
 
 			<View
 				android:id="@+id/color"
-				android:layout_width="2dp"
-				android:layout_height="2dp" />
+				android:layout_width="5dp"
+				android:layout_height="5dp"
+				android:layout_marginLeft="5dp"
+				android:background="@color/colorAccent" />
 
 			<TextView
 				android:id="@+id/lang"
 				android:text="C++"
+				android:textSize="12dp"
+				android:fontFamily="@font/robotoregular"
+				android:textColor="#52575C"
 				android:layout_marginLeft="10dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
@@ -97,7 +104,10 @@
 			<TextView
 				android:id="@+id/stars"
 				android:text="450"
-				android:layout_marginLeft="10dp"
+				android:layout_marginLeft="5dp"
+				android:textSize="12dp"
+				android:fontFamily="@font/robotoregular"
+				android:textColor="#52575C"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
 
@@ -110,7 +120,10 @@
 			<TextView
 				android:id="@+id/forks"
 				android:text="450"
-				android:layout_marginLeft="10dp"
+				android:layout_marginLeft="5dp"
+				android:textSize="12dp"
+				android:fontFamily="@font/robotoregular"
+				android:textColor="#52575C"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
 

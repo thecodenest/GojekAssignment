@@ -46,6 +46,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.Aauthor.setText(mData.get(position).getAuthor());
         holder.Aname.setText(mData.get(position).getName());
+        holder.Lang.setText(mData.get(position).getLanguage());
+        holder.Stars.setText(mData.get(position).getStars().toString());
+        holder.Forks.setText(mData.get(position).getForks().toString());
+        //holder.coolor.setBackgroundColor(Color.parseColor(mData.get(position).getLanguageColor()));
+
 
 
     }
@@ -55,19 +60,40 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mData.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView Aauthor,Aname ;
+        TextView Aauthor,Aname,Lang,Stars,Forks ;
+        View coolor;
         CircleImageView Aavatar;
-        LinearLayout view_container;
+        LinearLayout view_container, collapse;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
+            collapse = itemView.findViewById(R.id.collapse);
             view_container = itemView.findViewById(R.id.container);
             Aavatar = itemView.findViewById(R.id.avatar);
             Aauthor = itemView.findViewById(R.id.author);
             Aname = itemView.findViewById(R.id.name);
+            Lang= itemView.findViewById(R.id.lang);
+            Stars= itemView.findViewById(R.id.stars);
+            Forks= itemView.findViewById(R.id.forks);
+            coolor = itemView.findViewById(R.id.color);
+
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if(collapse.getVisibility()==View.VISIBLE)
+            {
+                collapse.setVisibility(View.GONE);
+
+            }
+            else{collapse.setVisibility(View.VISIBLE);}
 
         }
     }
