@@ -6,17 +6,17 @@ Fetch GitHub treanding api list and show then in recyclerview.
 
 # Used Dependencies
 
-Retrofit, 
-RxJava, 
-CircleImageview, 
-Glide, 
-OkHttp, 
-FBShimmer Animation, 
-SwipeRefresh
+* Retrofit
+* RxJava
+* CircleImageview 
+* Glide
+* OkHttp 
+* FBShimmer Animation
+* SwipeRefresh
 
 # Screen-Shot
 
-![](https://drive.google.com/open?id=1-HNb_49UW8znddkn8dU_Ancqe79X6g9d)
+https://gojekdemo.s3.ap-south-1.amazonaws.com/1.png
 
 https://drive.google.com/open?id=1-Ptri7axeeeSaTIkLqVaZzYV3O4KF9w6
 
