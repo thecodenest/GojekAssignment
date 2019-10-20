@@ -6,7 +6,7 @@ Fetch GitHub treanding api list and show then in recyclerview.
 
 # Used Dependencies
 
-Retrofit
+Retrofit<\br>
 RxJava
 CircleImageview
 Glide
