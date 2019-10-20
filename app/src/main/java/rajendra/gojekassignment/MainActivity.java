@@ -5,6 +5,7 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView ;
     RecyclerViewAdapter dataAdapter;
     private ShimmerFrameLayout mShimmerViewContainer;
-
+    private SwipeRefreshLayout swipeContainer;
 
 
     CompositeDisposable compositeDisposable=new CompositeDisposable();
@@ -70,10 +71,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupRecyclerview();
+        setupView();
         setupRetroOkHttp();
         fetchData();
 
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                fetchData();
+            }
+        });
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                            mShimmerViewContainer.stopShimmer();
                            mShimmerViewContainer.setVisibility(View.GONE);
-
+                           swipeContainer.setRefreshing(false);
                            Intent i=new Intent(MainActivity.this, ConnectionError.class);
                            startActivity(i);
 
@@ -135,9 +144,11 @@ public class MainActivity extends AppCompatActivity {
                        @Override
                        public void onComplete() {
 
+                           swipeContainer.setRefreshing(false);
 
 
-                   }
+
+                       }
                    });
 
 
@@ -153,9 +164,9 @@ public class MainActivity extends AppCompatActivity {
         mShimmerViewContainer.setVisibility(View.GONE);
     }
 
-    private void setupRecyclerview() {
+    private void setupView() {
 
-
+        swipeContainer = findViewById(R.id.swipeContainer);
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         menu= findViewById(R.id.menu);
         recyclerView = findViewById(R.id.recycler);
@@ -187,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     CacheControl cc = new CacheControl.Builder()
-                            .maxStale(2, TimeUnit.SECONDS)
+                            .maxStale(2, TimeUnit.HOURS)
                             .build();
 
 
@@ -222,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
                     CacheControl cacheControl = new CacheControl.Builder()
                             .onlyIfCached()
-                            .maxStale(2, TimeUnit.SECONDS)
+                            .maxStale(2, TimeUnit.HOURS)
                             .build();
 
                     Request offlineRequest = chain.request().newBuilder()
