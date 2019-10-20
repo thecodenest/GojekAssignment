@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Fetch data from api through rxjava
+     */
+
     private void fetchData() {
            apiInterface.getRepositories()
                    .subscribeOn(Schedulers.io())
@@ -166,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * cache control interceptor
+     */
     private Interceptor provideCacheInterceptor() {
 
         return new Interceptor() {
@@ -180,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     CacheControl cc = new CacheControl.Builder()
-                            .maxStale(2, TimeUnit.HOURS)
+                            .maxStale(2, TimeUnit.SECONDS)
                             .build();
 
 
@@ -200,6 +207,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * offline cache interceptor
+     */
     private Interceptor provideOfflineCacheInterceptor() {
 
         return new Interceptor() {
@@ -212,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
                     CacheControl cacheControl = new CacheControl.Builder()
                             .onlyIfCached()
-                            .maxStale(2, TimeUnit.HOURS)
+                            .maxStale(2, TimeUnit.SECONDS)
                             .build();
 
                     Request offlineRequest = chain.request().newBuilder()

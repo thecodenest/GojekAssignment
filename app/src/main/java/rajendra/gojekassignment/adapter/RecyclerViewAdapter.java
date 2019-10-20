@@ -49,7 +49,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.Lang.setText(mData.get(position).getLanguage());
         holder.Stars.setText(mData.get(position).getStars().toString());
         holder.Forks.setText(mData.get(position).getForks().toString());
-        //holder.coolor.setBackgroundColor(Color.parseColor(mData.get(position).getLanguageColor()));
 
 
 
@@ -63,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView Aauthor,Aname,Lang,Stars,Forks ;
-        View coolor;
+        View Langcolor;
         CircleImageView Aavatar;
         LinearLayout view_container, collapse;
 
@@ -79,7 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Lang= itemView.findViewById(R.id.lang);
             Stars= itemView.findViewById(R.id.stars);
             Forks= itemView.findViewById(R.id.forks);
-            coolor = itemView.findViewById(R.id.color);
+            Langcolor = itemView.findViewById(R.id.color);
 
             itemView.setOnClickListener(this);
 

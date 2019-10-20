@@ -36,13 +36,11 @@ public class RecyclerView {
     }
 
     public String getLangcolor() {
-        return Color;
+        return Langcolor;
     }
 
-    public void setLangcolor(String color) {
-        Color = color
-        ;
-    }
+    public void setLangcolor(String langcolor) {
+        Langcolor = langcolor; }
 
     public Integer getStars() {
         return Stars;
@@ -64,18 +62,18 @@ public class RecyclerView {
     private String Nname;
     private String Aavatar;
     private String Lang;
-    private String Color;
+    private String Langcolor;
     private Integer Stars;
     private Integer Forks;
 
-    public RecyclerView(String aauthor, String nname, String aavatar, String lang, Integer stars, Integer forks, String color) {
+    public RecyclerView(String aauthor, String nname, String aavatar, String lang, Integer stars, Integer forks, String langcolor) {
         Aauthor = aauthor;
         Nname = nname;
         Aavatar = aavatar;
         Lang = lang;
         Stars = stars;
         Forks = forks;
-        Color = color;
+        Langcolor = langcolor;
     }
 
 
